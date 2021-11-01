@@ -1,0 +1,17 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Launch Program",
+      "sourceMaps": true,
+      "program": "${workspaceFolder}\\dist\\server.js",
+      "preLaunchTask": "tsc: build - tsconfig.json",
+      "console": "internalConsole",
+      "outputCapture": "std",
+      "envFile": "${workspaceFolder}\\.env",
+      "outFiles": ["${workspaceFolder}/dist/**/*.js"]
+    }
+  ]
+}

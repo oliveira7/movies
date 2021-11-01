@@ -1,0 +1,33 @@
+{
+  "name": "movies",
+  "description": "",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Yuri Oliveira",
+  "license": "ISC",
+  "scripts": {
+    "start": "node src/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/oliveira7/movies.git"
+  },
+  "bugs": {
+    "url": "https://github.com/oliveira7/movies/issues"
+  },
+  "homepage": "https://github.com/oliveira7/movies#readme",
+  "dependencies": {
+    "axios": "^0.24.0",
+    "bcrypt": "^5.0.1",
+    "config": "^3.3.6",
+    "cors": "^2.8.5",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "express-handlebars": "^5.3.4",
+    "mysql2": "^2.3.2",
+    "sequelize": "^6.9.0"
+  },
+  "devDependencies": {
+    "sequelize-cli": "^6.2.0"
+  }
+}
