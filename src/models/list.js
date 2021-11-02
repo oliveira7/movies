@@ -1,29 +1,21 @@
-const { Model, DataTypes } = require("sequelize");
-
-class User extends Model {
-  static init(sequelize) {
-    super.init(
-      {
-        firstName: DataTypes.STRING,
-        lastName: DataTypes.STRING,
-        email: DataTypes.STRING,
-        username: DataTypes.STRING,
-        password: DataTypes.STRING,
-      },
-      {
-        sequelize,
-      }
-    );
-  }
-
-  static associate(models) {
-    this.belongsTo(models.User, { foreignKey: "userId", as: "user" });
-    this.belongsToMany(models.Movie, {
+"use strict";
+module.exports = (sequelize, DataTypes) => {
+  const Lists = sequelize.define(
+    "Lists",
+    {
+      name: DataTypes.STRING,
+      description: DataTypes.STRING,
+    },
+    {}
+  );
+  Lists.associate = function (models) {
+    Lists.belongsTo(models.Users);
+    Lists.belongsToMany(models.Movies, {
       foreignKey: "listId",
       through: "list_movies",
       as: "movies",
     });
-  }
-}
+  };
 
-module.exports = User;
+  return Lists;
+};

@@ -6,6 +6,9 @@ const path = require("path");
 require("dotenv").config();
 
 const applicationRouter = require("./routes/applicationRouter");
+const movieRouter = require("./routes/movieRouter");
+const userRouter = require("./routes/userRouter");
+const listRouter = require("./routes/listRouter");
 
 class App {
   app = express.application;
@@ -45,6 +48,9 @@ class App {
 
   protectedRoutes() {
     this.app.use("/", applicationRouter);
+    this.app.use("/", movieRouter);
+    this.app.use("/", userRouter);
+    this.app.use("/", listRouter);
   }
 }
 
