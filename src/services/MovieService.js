@@ -21,7 +21,8 @@ class MovieService {
 
       return response.data;
     } catch (err) {
-      throw new Error({ message: err.message });
+      const error = new Error(err.message);
+      throw error;
     }
   }
 
@@ -30,12 +31,13 @@ class MovieService {
       const movie = await Movie.findByPk(movieId);
 
       if (!movie) {
-        throw new Error({ error: "Filme não encontrado!" });
+        throw new Error("Filme não encontrado!");
       }
 
       return movie;
     } catch (err) {
-      throw new Error({ message: err.message });
+      const error = new Error(err.message);
+      throw error;
     }
   }
 }

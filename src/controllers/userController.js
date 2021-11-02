@@ -9,7 +9,7 @@ module.exports = {
 
       res.status(201).end();
     } catch (err) {
-      console.log({ message: err.message });
+      return res.status(500).json(err.message);
     }
   },
 };

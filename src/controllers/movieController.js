@@ -9,7 +9,7 @@ module.exports = {
 
       res.status(200).send(response);
     } catch (err) {
-      console.log({ message: err.message });
+      return res.status(500).json(err.message);
     }
   },
   async show(req, res, next) {
@@ -19,7 +19,7 @@ module.exports = {
 
       res.status(200).send(response);
     } catch (err) {
-      console.log({ message: err.message });
+      return res.status(500).json(err.message);
     }
   },
 };

@@ -7,14 +7,15 @@ class UserService {
   async create(body) {
     try {
       if (!(body.email && body.password && body.username)) {
-        throw new Error({ error: "Dados inválidos!" });
+        throw new Error("Dados inválidos!");
       }
       const salt = await bcrypt.genSalt(10);
       body.password = await bcrypt.hash(body.password, salt);
 
       await Users.create(body);
     } catch (err) {
-      throw new Error({ message: err.message });
+      const error = new Error(err.message);
+      throw error;
     }
   }
 }
