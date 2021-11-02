@@ -8,7 +8,7 @@ module.exports = {
 
       res.status(200).send(lists);
     } catch (err) {
-      console.log({ message: err.message });
+      return res.status(500).json(err.message);
     }
   },
   async store(req, res, next) {
@@ -18,7 +18,7 @@ module.exports = {
 
       res.status(201).end();
     } catch (err) {
-      console.log({ message: err.message });
+      return res.status(500).json(err.message);
     }
   },
   async show(req, res, next) {
@@ -28,7 +28,7 @@ module.exports = {
 
       res.status(200).send(list);
     } catch (err) {
-      console.log({ message: err.message });
+      return res.status(500).json(err.message);
     }
   },
   async destroy(req, res, next) {
@@ -38,31 +38,28 @@ module.exports = {
 
       res.status(204).end();
     } catch (err) {
-      console.log({ message: err.message });
+      return res.status(500).json(err.message);
     }
   },
   async addMovie(req, res, next) {
     try {
       const { id } = req.params;
-      const { movieId } = req.body;
-      await ListServiceInstance.addNewMovie(id, movieId);
+      const { body } = req;
+      await ListServiceInstance.addNewMovie(id, body);
 
-      res.status(201);
-      res.send();
+      res.status(201).end();
     } catch (err) {
-      console.log({ message: err.message });
+      return res.status(500).json(err.message);
     }
   },
   async removeMovie(req, res, next) {
     try {
-      const { id } = req.params;
-      const { movieId } = req.body;
+      const { id, movieId } = req.params;
       await ListServiceInstance.removeMovie(id, movieId);
 
-      res.status(204);
-      res.end();
+      res.status(204).end();
     } catch (err) {
-      console.log({ message: err.message });
+      return res.status(500).json(err.message);
     }
   },
 };

@@ -24,10 +24,10 @@ module.exports = {
         type: Sequelize.DATE,
       },
       overview: {
-        type: Sequelize.STRING,
+        type: Sequelize.TEXT,
       },
       voteAverage: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.DOUBLE,
       },
       createdAt: {
         allowNull: false,

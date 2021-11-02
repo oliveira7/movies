@@ -1,5 +1,5 @@
 const bcrypt = require("bcrypt");
-const database = require("../models");
+const { Users } = require("../models");
 
 class UserService {
   constructor() {}
@@ -12,7 +12,7 @@ class UserService {
       const salt = await bcrypt.genSalt(10);
       body.password = await bcrypt.hash(body.password, salt);
 
-      await database.Users.create(body);
+      await Users.create(body);
     } catch (err) {
       throw new Error({ message: err.message });
     }

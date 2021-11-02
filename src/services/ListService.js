@@ -1,90 +1,110 @@
-const axios = require("axios");
-const List = require("../models/List");
+const { Movies, Lists } = require("../models");
 
 class ListService {
   constructor() {}
 
   async lists() {
     try {
-      const lists = await List.findAll();
+      const lists = await Lists.findAll();
 
       if (!lists) {
-        throw new Error({ error: "Não existe nenhuma lista!" });
+        throw new Error("Não existe nenhuma lista!");
       }
 
       return lists;
     } catch (err) {
-      throw new Error({ message: err.message });
+      const error = new Error(err.message);
+      throw error;
     }
   }
 
   async createList(body) {
     try {
-      await List.create(body);
+      if (!(body.name && body.description)) {
+        throw new Error("Dados inválidos!");
+      }
+
+      await Lists.create({
+        name: body.name,
+        description: body.description,
+        userId: body.userId,
+      });
     } catch (err) {
-      throw new Error({ message: err.message });
+      const error = new Error(err.message);
+      throw error;
     }
   }
 
   async showList(listId) {
     try {
-      const list = await List.findByPk(listId);
+      const list = await Lists.findByPk(listId, {
+        include: {
+          association: "movies",
+          through: {
+            attributes: [],
+          },
+        },
+      });
 
       if (!list) {
-        throw new Error({ error: "Lista não encontrada!" });
+        throw new Error("Lista não encontrada!");
       }
 
       return list;
     } catch (err) {
-      throw new Error({ message: err.message });
+      const error = new Error(err.message);
+      throw error;
     }
   }
 
   async destroyList(listId) {
     try {
-      const tech = await List.findOne({
-        where: { name },
+      await Lists.destroy({
+        where: { id: listId },
       });
-
-      await List.removeByFK(listId);
     } catch (err) {
-      throw new Error({ message: err.message });
+      const error = new Error(err.message);
+      throw error;
     }
   }
 
-  async addNewMovie(listId, title) {
+  async addNewMovie(listId, body) {
     try {
-      const list = await List.findByPk(listId);
+      const list = await Lists.findByPk(listId);
 
       if (!list) {
-        throw new Error({ error: "Lista não encontrada!" });
+        throw new Error("Lista não encontrada!");
       }
 
-      const [movie] = await Movie.findOrCreate({
-        where: { title },
+      let movie = await Movies.findOne({
+        where: { externalId: body.externalId },
       });
+
+      if (!movie) {
+        movie = await Movies.create(body);
+      }
 
       await list.addMovie(movie);
     } catch (err) {
-      throw new Error({ message: err.message });
+      const error = new Error(err.message);
+      throw error;
     }
   }
 
   async removeMovie(listId, movieId) {
     try {
-      const list = await List.findByPk(listId);
+      const list = await Lists.findByPk(listId);
 
       if (!list) {
-        throw new Error({ error: "Lista não encontrada!" });
+        throw new Error("Lista não encontrada!");
       }
 
-      const movie = await Movie.findOne({
-        where: { movieId },
-      });
+      const movie = await Movies.findByPk(movieId);
 
       await list.removeMovie(movie);
     } catch (err) {
-      throw new Error({ message: err.message });
+      const error = new Error(err.message);
+      throw error;
     }
   }
 }

@@ -11,16 +11,12 @@ module.exports = {
       listId: {
         type: Sequelize.INTEGER,
         allowNull: false,
-        references: { model: "lists", key: "id" },
-        onUpdate: "CASCADE",
-        onDelete: "CASCADE",
+        references: { model: "Lists", key: "id" },
       },
       movieId: {
         type: Sequelize.INTEGER,
         allowNull: false,
-        references: { model: "movies", key: "id" },
-        onUpdate: "CASCADE",
-        onDelete: "CASCADE",
+        references: { model: "Movies", key: "id" },
       },
       createdAt: {
         allowNull: false,

@@ -14,11 +14,10 @@ module.exports = (sequelize, DataTypes) => {
     {}
   );
   Movies.associate = function (models) {
-    Movies.belongsTo(models.Users);
     Movies.belongsToMany(models.Lists, {
       foreignKey: "movieId",
       through: "list_movies",
-      as: "lists",
+      as: "lists"
     });
   };
 
