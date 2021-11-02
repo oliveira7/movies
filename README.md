@@ -25,7 +25,7 @@
 7. Rode `npm start` para iniciar o servidor.
 8. Importe o [json](https://www.getpostman.com/collections/8642e16e368758d9fcca) desse repositório no postman;
 
-OBS: No .env-exemple existe um token que é necessário para acessar a api externa do tmdb, caso queira criar o seu próprio token basta acessar a [documentação](https://developers.themoviedb.org/3/getting-started/authentication) para saber mais.
+OBS: Deixei um token(sei que é falha de sec rsrs) no .env-exemple que é necessário para acessar a api externa do tmdb, caso queira criar o seu próprio token basta acessar a [documentação](https://developers.themoviedb.org/3/getting-started/authentication) para saber mais.
 ## 🧐 A fazer
 
 1. Criar frontend;
