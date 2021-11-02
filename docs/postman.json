@@ -1,0 +1,392 @@
+// 20211102181734
+// https://www.postman.com/collections/8642e16e368758d9fcca
+
+{
+  "info": {
+    "_postman_id": "53155581-f915-41d4-bf32-c34170f64e24",
+    "name": "MOVIES_API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "USUÁRIO",
+      "item": [
+        {
+          "name": "Create",
+          "id": "dd7952c9-6f85-4a34-8b60-8f0b680ff114",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2MzU4MzM5NjYsImV4cCI6MTYzNTg0MTE2Nn0.8OYQcLUDaLK-uIcWb29QuQHaFtP3jpEQsSNqO3-wt4w",
+                "type": "text",
+                "disabled": true
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"firstName\": \"Osvaldo\",\r\n    \"lastName\": \"Silva\",\r\n    \"email\": \"osva@mail.com\",\r\n    \"username\": \"osvaldinhu\",\r\n    \"password\": \"batatinhafrita123\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": "localhost:3000/users"
+          },
+          "response": [
+            
+          ]
+        },
+        {
+          "name": "Login",
+          "id": "215ee0a0-c63b-46cd-aeb1-e9b51165bf5e",
+          "request": {
+            "method": "POST",
+            "header": [
+              
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"email\": \"osva@mail.com\",\r\n    \"password\": \"batatinhafrita123\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": "localhost:3000/login"
+          },
+          "response": [
+            
+          ]
+        }
+      ],
+      "id": "16f034ef-addf-4ba5-b129-c06effe5c642"
+    },
+    {
+      "name": "LISTAS",
+      "item": [
+        {
+          "name": "Lists",
+          "id": "971131c3-225a-48b8-bcac-b4c7a267e602",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2MzU4NDEzODAsImV4cCI6MTYzNTg0ODU4MH0.avTh4lOIBWVlnKwi8SuXJhR8w-oTIeRASBrCsBcTFBY",
+                "type": "text"
+              }
+            ],
+            "url": "localhost:3000/lists"
+          },
+          "response": [
+            
+          ]
+        },
+        {
+          "name": "Lists",
+          "id": "e6834eef-f54b-47e8-a219-97fe8b344d8c",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2MzU4NDEzODAsImV4cCI6MTYzNTg0ODU4MH0.avTh4lOIBWVlnKwi8SuXJhR8w-oTIeRASBrCsBcTFBY",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"name\": \"só filme sessão da tarde\",\r\n    \"description\": \"Melhores filmes do world\",\r\n    \"userId\": 1\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": "localhost:3000/lists"
+          },
+          "response": [
+            
+          ]
+        },
+        {
+          "name": "List",
+          "id": "03bef2b4-a5c1-48d9-9d54-36d3d5cca704",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2MzU4NDEzODAsImV4cCI6MTYzNTg0ODU4MH0.avTh4lOIBWVlnKwi8SuXJhR8w-oTIeRASBrCsBcTFBY",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "localhost:3000/lists/:id",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "lists",
+                ":id"
+              ],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "1"
+                }
+              ]
+            }
+          },
+          "response": [
+            
+          ]
+        },
+        {
+          "name": "Add Movie",
+          "id": "d45563bb-f38c-4811-9f10-991db713fad3",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2MzU4NDEzODAsImV4cCI6MTYzNTg0ODU4MH0.avTh4lOIBWVlnKwi8SuXJhR8w-oTIeRASBrCsBcTFBY",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"externalId\": 438631,\r\n    \"title\": \"Duna\",\r\n    \"originalTitle\": \"Dune\",\r\n    \"posterPath\": \"/s9E9W77HS8zEQvsrpz5aEUTKnvD.jpg\",\r\n    \"releaseDate\": \"2021-09-15\",\r\n    \"overview\": \"Em um futuro distante, planetas são comandados por casas nobres que fazem parte de um império feudal intergalático. Paul Atreides é um jovem cuja família toma o controle do planeta deserto Arrakis, também conhecido como Duna. A única fonte da especiaria Melange, a substância mais importante do cosmos, Arrakis se mostra ser um planeta nem um pouco fácil de governar.\",\r\n    \"voteAverage\": \"8.0\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "localhost:3000/lists/:id/movies",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "lists",
+                ":id",
+                "movies"
+              ],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "1"
+                }
+              ]
+            }
+          },
+          "response": [
+            
+          ]
+        },
+        {
+          "name": "Remove Movie",
+          "id": "80054640-6432-4280-8e93-3cbf50c8a05e",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2MzU4NDEzODAsImV4cCI6MTYzNTg0ODU4MH0.avTh4lOIBWVlnKwi8SuXJhR8w-oTIeRASBrCsBcTFBY",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "localhost:3000/lists/:id/movies/:movieId",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "lists",
+                ":id",
+                "movies",
+                ":movieId"
+              ],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "1"
+                },
+                {
+                  "key": "movieId",
+                  "value": "1"
+                }
+              ]
+            }
+          },
+          "response": [
+            
+          ]
+        },
+        {
+          "name": "List",
+          "id": "815dbbec-1a50-4e23-8d4b-59bf847aac00",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2MzU4NDEzODAsImV4cCI6MTYzNTg0ODU4MH0.avTh4lOIBWVlnKwi8SuXJhR8w-oTIeRASBrCsBcTFBY",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "localhost:3000/lists/:id",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "lists",
+                ":id"
+              ],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "1"
+                }
+              ]
+            }
+          },
+          "response": [
+            
+          ]
+        }
+      ],
+      "id": "3cda3f55-e883-4927-9a0c-7e6f0aa24106"
+    },
+    {
+      "name": "FILME",
+      "item": [
+        {
+          "name": "List",
+          "id": "e8ace5bb-2b0f-40e7-b8f4-beb83bdd5a8f",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2MzU4NDEzODAsImV4cCI6MTYzNTg0ODU4MH0.avTh4lOIBWVlnKwi8SuXJhR8w-oTIeRASBrCsBcTFBY",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "localhost:3000/movies/search?search=duna",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "movies",
+                "search"
+              ],
+              "query": [
+                {
+                  "key": "search",
+                  "value": "duna"
+                }
+              ]
+            }
+          },
+          "response": [
+            
+          ]
+        },
+        {
+          "name": "Details",
+          "id": "4dda3903-8620-4070-af31-9e5d73f01dcd",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2MzU4NDEzODAsImV4cCI6MTYzNTg0ODU4MH0.avTh4lOIBWVlnKwi8SuXJhR8w-oTIeRASBrCsBcTFBY",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "localhost:3000/movies/:id",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "movies",
+                ":id"
+              ],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "1"
+                }
+              ]
+            }
+          },
+          "response": [
+            
+          ]
+        }
+      ],
+      "id": "25c98256-cd10-467a-b5d8-5b7cebfbbe6d"
+    }
+  ]
+}
