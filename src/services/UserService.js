@@ -1,13 +1,12 @@
 const bcrypt = require("bcrypt");
 const { Users } = require("../models");
-
 class UserService {
   constructor() {}
 
   async create(body) {
     try {
       if (!(body.email && body.password && body.username)) {
-        throw new Error("Dados inválidos!");
+        throw new Error("Dados faltantes!");
       }
       const salt = await bcrypt.genSalt(10);
       body.password = await bcrypt.hash(body.password, salt);

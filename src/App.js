@@ -9,6 +9,8 @@ const applicationRouter = require("./routes/applicationRouter");
 const movieRouter = require("./routes/movieRouter");
 const userRouter = require("./routes/userRouter");
 const listRouter = require("./routes/listRouter");
+const loginRouter = require("./routes/loginRouter");
+const auth = require("./middleware/authorization");
 
 class App {
   app = express.application;
@@ -16,9 +18,8 @@ class App {
   constructor() {
     this.app = express();
     this.handlebars();
-    this.unProtectedRoutes();
     this.middleware();
-    this.protectedRoutes();
+    this.routes();
   }
 
   handlebars() {
@@ -44,13 +45,11 @@ class App {
     this.app.use(express.json());
   }
 
-  unProtectedRoutes() {}
-
-  protectedRoutes() {
-    this.app.use("/", applicationRouter);
-    this.app.use("/", movieRouter);
-    this.app.use("/", userRouter);
-    this.app.use("/", listRouter);
+  routes() {
+    this.app.use("/", loginRouter);
+    this.app.use("/", auth, movieRouter);
+    this.app.use("/", auth, userRouter);
+    this.app.use("/", auth, listRouter);
   }
 }
 
