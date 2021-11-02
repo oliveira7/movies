@@ -47,8 +47,8 @@ class App {
 
   routes() {
     this.app.use("/", loginRouter);
+    this.app.use("/", userRouter);
     this.app.use("/", auth, movieRouter);
-    this.app.use("/", auth, userRouter);
     this.app.use("/", auth, listRouter);
   }
 }
