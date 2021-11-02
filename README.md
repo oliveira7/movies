@@ -32,4 +32,5 @@ OBS: Deixei um token(sei que é falha de sec rsrs) no .env-exemple que é necess
 2. Dockerizar aplicação;
 3. Melhorar tratamento de erros;
 4. Validação de requests;
+5. Criar testes;
 
