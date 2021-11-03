@@ -14,7 +14,7 @@
 
 - [Node.js](https://nodejs.org/en/)
 - [MySQL](https://dev.mysql.com/downloads/installer/)
-- 
+
 ## 💥 Instalação e execução
 
 1. Faça um clone desse repositório;
@@ -35,9 +35,9 @@ OBS: Deixei um token(sei que é falha de sec rsrs) no .env-exemple que é necess
 ![Screenshot](/docs/mer.PNG)
 ## 🧐 A fazer
 
-1. Criar frontend;
-2. Dockerizar aplicação;
-3. Melhorar tratamento de erros;
-4. Validação de requests;
-5. Criar testes;
+- Criar frontend;
+- Dockerizar aplicação;
+- Melhorar tratamento de erros;
+- Validação de requests;
+- Criar testes;
 
