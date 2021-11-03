@@ -13,7 +13,8 @@
 ## ✋🏻 Pré-requisitos
 
 - [Node.js](https://nodejs.org/en/)
-
+- [MySQL](https://dev.mysql.com/downloads/installer/)
+- 
 ## 💥 Instalação e execução
 
 1. Faça um clone desse repositório;
