@@ -1,7 +1,7 @@
 ("use strict");
 module.exports = (sequelize, DataTypes) => {
-  const Movies = sequelize.define(
-    "Movies",
+  const movies = sequelize.define(
+    "movies",
     {
       externalId: DataTypes.INTEGER,
       title: DataTypes.STRING,
@@ -13,13 +13,13 @@ module.exports = (sequelize, DataTypes) => {
     },
     {}
   );
-  Movies.associate = function (models) {
-    Movies.belongsToMany(models.Lists, {
+  movies.associate = function (models) {
+    movies.belongsToMany(models.lists, {
       foreignKey: "movieId",
       through: "list_movies",
       as: "lists"
     });
   };
 
-  return Movies;
+  return movies;
 };

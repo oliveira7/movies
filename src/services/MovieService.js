@@ -1,5 +1,5 @@
 const axios = require("axios");
-const { Movie } = require("../models");
+const { movies } = require("../models");
 
 class MovieService {
   constructor() {}
@@ -28,7 +28,7 @@ class MovieService {
 
   async detail(movieId) {
     try {
-      const movie = await Movie.findByPk(movieId);
+      const movie = await movies.findByPk(movieId);
 
       if (!movie) {
         throw new Error("Filme não encontrado!");

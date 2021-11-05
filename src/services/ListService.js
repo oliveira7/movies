@@ -1,17 +1,17 @@
-const { Movies, Lists } = require("../models");
+const { movies, lists } = require("../models");
 
 class ListService {
   constructor() {}
 
   async lists() {
     try {
-      const lists = await Lists.findAll();
+      const list = await lists.findAll();
 
-      if (!lists) {
+      if (!list) {
         throw new Error("Não existe nenhuma lista!");
       }
 
-      return lists;
+      return list;
     } catch (err) {
       const error = new Error(err.message);
       throw error;
@@ -24,7 +24,7 @@ class ListService {
         throw new Error("Dados inválidos!");
       }
 
-      await Lists.create({
+      await lists.create({
         name: body.name,
         description: body.description,
         userId: body.userId,
@@ -37,7 +37,7 @@ class ListService {
 
   async showList(listId) {
     try {
-      const list = await Lists.findByPk(listId, {
+      const list = await lists.findByPk(listId, {
         include: {
           association: "movies",
           through: {
@@ -59,7 +59,7 @@ class ListService {
 
   async destroyList(listId) {
     try {
-      await Lists.destroy({
+      await lists.destroy({
         where: { id: listId },
       });
     } catch (err) {
@@ -70,18 +70,18 @@ class ListService {
 
   async addNewMovie(listId, body) {
     try {
-      const list = await Lists.findByPk(listId);
+      const list = await lists.findByPk(listId);
 
       if (!list) {
         throw new Error("Lista não encontrada!");
       }
 
-      let movie = await Movies.findOne({
+      let movie = await movies.findOne({
         where: { externalId: body.externalId },
       });
 
       if (!movie) {
-        movie = await Movies.create(body);
+        movie = await movies.create(body);
       }
 
       await list.addMovie(movie);
@@ -93,13 +93,13 @@ class ListService {
 
   async removeMovie(listId, movieId) {
     try {
-      const list = await Lists.findByPk(listId);
+      const list = await lists.findByPk(listId);
 
       if (!list) {
         throw new Error("Lista não encontrada!");
       }
 
-      const movie = await Movies.findByPk(movieId);
+      const movie = await movies.findByPk(movieId);
 
       await list.removeMovie(movie);
     } catch (err) {

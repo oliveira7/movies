@@ -1,0 +1,40 @@
+version: '3.8'
+
+services:
+  api:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile
+    image: yuri/movies-api
+    container_name: movies-api
+    ports: 
+      - '3000:3000'
+    networks:
+      - app-connect
+    depends_on:
+      - db
+    command: bash -c "/var/www/wait-for-it.sh -t 20 -h 127.0.0.1 -p 3306 -- /var/www/entrypoint.sh"
+  db:
+    image: mysql
+    cap_add:
+      - SYS_NICE  
+    environment: 
+      MYSQL_DATABASE: movies_db
+      MYSQL_ALLOW_EMPTY_PASSWORD: yes
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_USER: yuri
+      MYSQL_PASSWORD: root
+      MYSQL_ROOT_HOST: db
+      MYSQL_PORT: 3306
+    volumes:
+      - db_data:/var/lib/mysql
+    networks:
+      - app-connect
+
+networks:
+  app-connect:
+    driver: bridge
+
+volumes:
+  db_data:
+    driver: local

@@ -1,13 +1,13 @@
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const config = require("../../config/auth");
-const { Users } = require("../models");
+const { users } = require("../models");
 
 module.exports = {
   async index(req, res) {
     const { email, password } = req.body;
 
-    const userExist = await Users.findOne({ email });
+    const userExist = await users.findOne({ email });
 
     if (!userExist) {
       return res.status(400).json({
