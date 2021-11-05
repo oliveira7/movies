@@ -8,7 +8,9 @@ module.exports = {
 
       res.status(200).send(lists);
     } catch (err) {
-      return res.status(500).json(err.message);
+      return res.status(err.statusCode).json({
+        message: err.name,
+      });
     }
   },
   async store(req, res, next) {
@@ -18,7 +20,9 @@ module.exports = {
 
       res.status(201).end();
     } catch (err) {
-      return res.status(500).json(err.message);
+      return res.status(err.statusCode).json({
+        message: err.name,
+      });
     }
   },
   async show(req, res, next) {
@@ -28,7 +32,9 @@ module.exports = {
 
       res.status(200).send(list);
     } catch (err) {
-      return res.status(500).json(err.message);
+      return res.status(err.statusCode).json({
+        message: err.name,
+      });
     }
   },
   async destroy(req, res, next) {
@@ -38,7 +44,9 @@ module.exports = {
 
       res.status(204).end();
     } catch (err) {
-      return res.status(500).json(err.message);
+      return res.status(err.statusCode).json({
+        message: err.name,
+      });
     }
   },
   async addMovie(req, res, next) {
@@ -49,7 +57,9 @@ module.exports = {
 
       res.status(201).end();
     } catch (err) {
-      return res.status(500).json(err.message);
+      return res.status(err.statusCode).json({
+        message: err.name,
+      });
     }
   },
   async removeMovie(req, res, next) {
@@ -59,7 +69,9 @@ module.exports = {
 
       res.status(204).end();
     } catch (err) {
-      return res.status(500).json(err.message);
+      return res.status(err.statusCode).json({
+        message: err.name,
+      });
     }
   },
 };

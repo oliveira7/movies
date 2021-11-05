@@ -9,7 +9,9 @@ module.exports = {
 
       res.status(201).end();
     } catch (err) {
-      return res.status(500).json(err.message);
+      return res.status(err.statusCode).json({
+        message: err.name,
+      });
     }
   },
 };

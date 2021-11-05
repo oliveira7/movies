@@ -9,7 +9,9 @@ module.exports = {
 
       res.status(200).send(response);
     } catch (err) {
-      return res.status(500).json(err.message);
+      return res.status(err.statusCode).json({
+        message: err.name,
+      });
     }
   },
   async show(req, res, next) {
@@ -19,7 +21,9 @@ module.exports = {
 
       res.status(200).send(response);
     } catch (err) {
-      return res.status(500).json(err.message);
+      return res.status(err.statusCode).json({
+        message: err.name,
+      });
     }
   },
 };

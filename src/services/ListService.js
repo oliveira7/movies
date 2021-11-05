@@ -1,5 +1,6 @@
 const { movies, lists } = require("../models");
-
+const Error400 = require("../errors/Error400");
+const Error404 = require("../errors/Error404");
 class ListService {
   constructor() {}
 
@@ -8,20 +9,19 @@ class ListService {
       const list = await lists.findAll();
 
       if (!list) {
-        throw new Error("Não existe nenhuma lista!");
+        throw new Error404("Não existe listas criadas.");
       }
 
       return list;
     } catch (err) {
-      const error = new Error(err.message);
-      throw error;
+      throw err;
     }
   }
 
   async createList(body) {
     try {
       if (!(body.name && body.description)) {
-        throw new Error("Dados inválidos!");
+        throw new Error400("Dados inválidos.");
       }
 
       await lists.create({
@@ -30,8 +30,7 @@ class ListService {
         userId: body.userId,
       });
     } catch (err) {
-      const error = new Error(err.message);
-      throw error;
+      throw err;
     }
   }
 
@@ -47,25 +46,28 @@ class ListService {
       });
 
       if (!list) {
-        throw new Error("Lista não encontrada!");
+        throw new Error404(`Lista com id: ${listId} não encontrada.`);
       }
 
       return list;
     } catch (err) {
-      const error = new Error(err.message);
-      throw error;
+      throw err;
     }
   }
 
   async destroyList(listId) {
     try {
       const list = await lists.findByPk(listId);
+
+      if (!list) {
+        throw new Error404(`Lista com id: ${listId} não encontrada.`);
+      }
+
       const array = await list.getMovies();
       await list.removeMovies(array);
       await list.destroy();
     } catch (err) {
-      const error = new Error(err.message);
-      throw error;
+      throw err;
     }
   }
 
@@ -74,7 +76,7 @@ class ListService {
       const list = await lists.findByPk(listId);
 
       if (!list) {
-        throw new Error("Lista não encontrada!");
+        throw new Error404(`Lista com id: ${listId} não encontrada.`);
       }
 
       let movie = await movies.findOne({
@@ -87,8 +89,7 @@ class ListService {
 
       await list.addMovie(movie);
     } catch (err) {
-      const error = new Error(err.message);
-      throw error;
+      throw err;
     }
   }
 
@@ -97,15 +98,14 @@ class ListService {
       const list = await lists.findByPk(listId);
 
       if (!list) {
-        throw new Error("Lista não encontrada!");
+        throw new Error404(`Lista com id: ${listId} não encontrada.`);
       }
 
       const movie = await movies.findByPk(movieId);
 
       await list.removeMovie(movie);
     } catch (err) {
-      const error = new Error(err.message);
-      throw error;
+      throw err;
     }
   }
 }

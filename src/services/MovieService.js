@@ -1,6 +1,6 @@
 const axios = require("axios");
 const { movies } = require("../models");
-
+const Error404 = require("../errors/Error404");
 class MovieService {
   constructor() {}
 
@@ -21,8 +21,7 @@ class MovieService {
 
       return response.data;
     } catch (err) {
-      const error = new Error(err.message);
-      throw error;
+      throw err;
     }
   }
 
@@ -31,13 +30,12 @@ class MovieService {
       const movie = await movies.findByPk(movieId);
 
       if (!movie) {
-        throw new Error("Filme não encontrado!");
+        throw new Error404(`Filme com id: ${movieId} não encontrado.`);
       }
 
       return movie;
     } catch (err) {
-      const error = new Error(err.message);
-      throw error;
+      throw err;
     }
   }
 }

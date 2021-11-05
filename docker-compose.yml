@@ -15,16 +15,14 @@ services:
       - db
     command: bash -c "/var/www/wait-for-it.sh -t 20 -h 127.0.0.1 -p 3306 -- /var/www/entrypoint.sh"
   db:
-    image: mysql
-    cap_add:
-      - SYS_NICE  
+    image: mysql:5.7
     environment: 
-      MYSQL_DATABASE: movies_db
+      MYSQL_DATABASE: "movies_db"
       MYSQL_ALLOW_EMPTY_PASSWORD: yes
       MYSQL_ROOT_PASSWORD: root
-      MYSQL_USER: yuri
-      MYSQL_PASSWORD: root
-      MYSQL_ROOT_HOST: db
+      MYSQL_USER: "${CONTAINER_DB_USER}"
+      MYSQL_PASSWORD: "${CONTAINER_DB_PASS}"
+      MYSQL_ROOT_HOST: "db"
       MYSQL_PORT: 3306
     volumes:
       - db_data:/var/lib/mysql
