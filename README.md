@@ -1,5 +1,5 @@
 <h3 align="center">
-  Api - Node.js com Sequelize
+  Api - Node.js com MySQL
 </h3>
 
 <p align="center">Aplicação desenvolvida para criar listas de filmes com base em uma api externa chamada TMDB.
@@ -13,8 +13,7 @@
 
 ## ✋🏻 Pré-requisitos
 
-- [Node.js](https://nodejs.org/en/)
-- [MySQL](https://dev.mysql.com/downloads/installer/)
+- [Node.js](https://nodejs.org/en/download/)
 - [Docker](https://docs.docker.com/desktop/windows/install/)
 ## 💥 Instalação e execução
 

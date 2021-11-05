@@ -59,9 +59,10 @@ class ListService {
 
   async destroyList(listId) {
     try {
-      await lists.destroy({
-        where: { id: listId },
-      });
+      const list = await lists.findByPk(listId);
+      const array = await list.getMovies();
+      await list.removeMovies(array);
+      await list.destroy();
     } catch (err) {
       const error = new Error(err.message);
       throw error;
