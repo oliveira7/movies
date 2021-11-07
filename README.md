@@ -23,7 +23,7 @@
 4. Rode `docker-compose up -d` para subir os containers;
 5. Importe o [json](https://www.getpostman.com/collections/8642e16e368758d9fcca) desse repositório no postman;
 
-OBS: Deixei os dados(não é seguro mas é para fins de teste) para que o teste fiquei mais fácil, caso contrário teria que cria um access token [TMDB](https://developers.themoviedb.org/3/getting-started/authentication). E como a aplicação está dockerizada, não é necessário trocar as váriaveis de banco.
+OBS: Deixei os dados(não é seguro mas é para fins de teste) no .env para que o teste fiquei mais fácil, caso contrário teria que cria um access token [TMDB](https://developers.themoviedb.org/3/getting-started/authentication). E como a aplicação está dockerizada, não é necessário trocar as váriaveis de banco.
 ## 🤓 Mer/Fluxo da aplicação
 
 ![Screenshot](/docs/fluxo.PNG)
